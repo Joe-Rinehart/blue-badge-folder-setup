@@ -20,9 +20,10 @@ app.use(express.json())
 
 // Have endpoint of journal/practice
 // send a response from that endpoint (This is a practice route)
+app.use('/user', user)
 
 app.use('/journal', journal)
-app.use('/user', user)
+
 
 app.listen(3000, function() {
     console.log("App is listening on port 3000")
