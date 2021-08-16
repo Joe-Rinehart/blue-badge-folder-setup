@@ -18,7 +18,7 @@ router.post('/create', validateSession, (req, res) => {
 router.get("/mine", validateSession, (req,res) => {
     let userid = req.user.id
     Log.findAll({
-        where: { owner: userid }
+        where: { owner_id: userid }
     })
         .then(log => res.status(200).json(log))
         .catch(err => res.status(500).json({ error: err }))
