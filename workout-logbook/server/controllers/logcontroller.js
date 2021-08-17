@@ -49,7 +49,7 @@ router.put("/update/:entryId", validateSession, function (req,res) {
 })
 
 router.delete("/delete/:id", validateSession, function (req,res) {
-    const query = {where: {id: req.params.id, owner: req.user.id}}
+    const query = {where: {id: req.params.entryId, owner: req.user.id}}
 
     Log.destroy(query)
         .then(() => res.status(200).json({message: "Log Entry Removed"}))
