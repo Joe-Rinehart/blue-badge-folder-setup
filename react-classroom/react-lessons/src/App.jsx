@@ -1,22 +1,23 @@
-// import logo from './logo.svg';
-import './App.css';
-import ClickCounter from './components/Day02-challenge/ClickCounter/ClickCounter';
-import PresidentParent from './components/Day02-challenge/Presidents/PresidentParent';
-import ParentComponent from './components/Day02-challenge/Votes/ParentComponent';
+import React, { useState, useEffect } from "react";
+
+import "./App.css";
+import TenLittleMonkeys from "./components/Day03-challenge/TenLittleMonkey";
+import InputField from "./components/Day03-challenge/inputFieldDemo/inputfield";
+import Calculator from "./components/Day03-challenge/calculator/Calculator";
 
 function App() {
-const welcomeName = "Joe"
-
-const phrase = "I wasn't alive then"
+  // This is a comment
+  const welcomeName = "Joe";
 
   return (
     <div className="App">
-      <h1>Welcome to React, {welcomeName}</h1>
-      {/* <ParentComponent phrase = {phrase}/>
-      <PresidentParent/> */}
-      <ClickCounter/>
+      <h1>Welecome to React, {welcomeName}</h1>
+      {/* <TenLittleMonkeys /> */}
+      {/* <InputField /> */}
+      <Calculator />
     </div>
   );
 }
 
 export default App;
+

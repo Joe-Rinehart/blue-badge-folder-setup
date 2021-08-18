@@ -24,11 +24,11 @@ router.get("/mine", validateSession, (req,res) => {
         .catch(err => res.status(500).json({ error: err }))
 })
 
-router.get('/:id', function (req,res) {
-    let ownerId = req.params.owner_id
+router.get('/:entryId', function (req,res) {
+    let entryId = req.params.entryId
 
     Log.findAll({
-        where: { owner_id: ownerId}
+        where: { id: entryId}
     })
     .then(logs => res.status(200).json(logs))
     .catch(err => res.status(500).json({ error: err }))   
@@ -41,15 +41,15 @@ router.put("/update/:entryId", validateSession, function (req,res) {
         result: req.body.result,
     }
 
-    const query = {where: { id: req.params.entryId, owner: req.user.id }}
+    const query = {where: { id: req.params.entryId, owner_id: req.user.id }}
 
     Log.update(updateLogEntry, query)
         .then((logs) => res.status(200).json(logs))
         .catch((err) => res.status(500).json({error: err}))
 })
 
-router.delete("/delete/:id", validateSession, function (req,res) {
-    const query = {where: {id: req.params.entryId, owner: req.user.id}}
+router.delete("/delete/:entryId", validateSession, function (req,res) {
+    const query = {where: {id: req.params.entryId, owner_id: req.user.id}}
 
     Log.destroy(query)
         .then(() => res.status(200).json({message: "Log Entry Removed"}))
