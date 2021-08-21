@@ -21,6 +21,3 @@ If you are getting started on this project We would recommend the following
 - log controller
 - validate session
 
-
-Delete:
-![Screenshot](Delete screenshot.png)
