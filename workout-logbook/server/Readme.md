@@ -21,3 +21,10 @@ If you are getting started on this project We would recommend the following
 - log controller
 - validate session
 
+![](images/Register.PNG)
+![](images/Login.PNG)
+![](images/Create.PNG)
+![](images/Mine.PNG)
+![](images/Id.PNG)
+![](images/Update.PNG)
+![](images/Delete.PNG)
