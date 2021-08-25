@@ -3,11 +3,11 @@ let router = express.Router()
 let validateSession = require('../middleware/validate-session')
 const Log = require('../db').import('../models/log')
 
-router.post('/create', validateSession, (req, res) => {
+router.post('/', validateSession, (req, res) => {
     const logEntry = {
-        description: req.body.description,
-        definition: req.body.definition,
-        result: req.body.result,
+        description: req.body.log.description,
+        definition: req.body.log.definition,
+        result: req.body.log.result,
         owner_id: req.user.id
     }
     Log.create(logEntry)
@@ -15,7 +15,7 @@ router.post('/create', validateSession, (req, res) => {
         .catch(err => res.status(500).json({ error: err }))
 })
 
-router.get("/mine", validateSession, (req,res) => {
+router.get("/", validateSession, (req,res) => {
     let userid = req.user.id
     Log.findAll({
         where: { owner_id: userid }
@@ -25,10 +25,10 @@ router.get("/mine", validateSession, (req,res) => {
 })
 
 router.get('/:entryId', function (req,res) {
-    let entryId = req.params.entryId
+    let userId = req.params.entryId
 
     Log.findAll({
-        where: { id: entryId}
+        where: { owner_id: userId}
     })
     .then(logs => res.status(200).json(logs))
     .catch(err => res.status(500).json({ error: err }))   
